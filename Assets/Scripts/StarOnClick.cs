@@ -15,6 +15,10 @@ public class StarOnClick : MonoBehaviour
     void startOnClick(){
         SceneManager.LoadScene("Scenes/Scene2");
     }
+    void Update(){
+       if (Input.GetKeyDown(KeyCode.Escape)) 
+    Application.Quit(); 
+ }
 
 
 }
