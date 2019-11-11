@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BuhaemOnClick : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class BuhaemOnClick : MonoBehaviour
 
     void Update(){
        if (Input.GetKeyDown(KeyCode.Escape)) 
-       Application.Quit(); 
+       SceneManager.LoadScene("Scenes/Scene1");
     }
     
 
