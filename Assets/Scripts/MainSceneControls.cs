@@ -4,34 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using AudioControll;
+using ImageControll;
 
 public class MainSceneControls : MonoBehaviour
 {
-    private Sprite sprite1, sprite2, sprite3;
     private Button btnBuhaem;
-    private GameObject image;
-
     private AudioController au;
-    
+
+    private ImagesController im;
     // Start is called before the first frame update
     
     void Start()
     {
-        sprite1 = Resources.Load<Sprite>("Images/shsh1");
-        sprite2 = Resources.Load<Sprite>("Images/shsh2");
-        sprite3 = Resources.Load<Sprite>("Images/shsh3");
-        image = GameObject.Find("MainImage");
-        
-        btnBuhaem = GameObject.Find("Button").GetComponent<Button>();
         au = new AudioController(GetComponent<AudioSource>());
-
-
-        
+        im = new ImagesController(GameObject.Find("MainImage"));
+        btnBuhaem = GameObject.Find("Button").GetComponent<Button>();
     }
     
     public void buhaemOnClick()
     {
-        setImage2();
+        im.setImage2();
         au.audioZaDruzhbu();
         Invoke("setImage3", 5);
         Invoke("setImage1", 7);
@@ -39,19 +31,16 @@ public class MainSceneControls : MonoBehaviour
         
     }
 
+    void setImage1(){
+        im.setImage1();
+    }
+    void setImage3(){
+        im.setImage3();
+    }
+
     void enabledButton(){
         btnBuhaem.enabled = true;
         btnBuhaem.interactable = true;
-    }
-
-    private void setImage1(){
-        image.GetComponent<Image>().sprite = sprite1;
-    }
-    private void setImage2(){
-        image.GetComponent<Image>().sprite = sprite2;
-    }
-    private void setImage3(){
-        image.GetComponent<Image>().sprite = sprite3;
     }
 
     void Update(){
